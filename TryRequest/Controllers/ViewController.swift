@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       let url = URL(string:"https://jsonplaceholder.typicode.com/users")
+        let url = URL(string:"https://jsonplaceholder.typicode.com/users")
         Alamofire.request(url ?? "").responseData { response in
             guard let data = response.value else {
                 return
@@ -24,22 +24,21 @@ class ViewController: UIViewController {
             
             do {
                 let users = try JSONDecoder().decode([User].self, from: data)
-                print(users)
+              //  print(users)
+              //  let user = [User].init()
+                for user1 in users{
+                    let userName = user1.name
+                    print(userName)
+                }
             } catch {
                 print(error)
             }
-            do {
-                let companies = try JSONDecoder().decode([Address].self, from: data)
-                print(companies)
-            } catch {
-                print(error)
-            }
-            }
-
-            
+        
+          }
+       
         }
 
-        
+       
         
         // Do any additional setup after loading the view.
     }
